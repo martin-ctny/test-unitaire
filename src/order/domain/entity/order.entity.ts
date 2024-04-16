@@ -66,6 +66,7 @@ export class Order {
 
     this.shippingAddress = shippingAddress;
     this.shippingAddressSetAt = new Date();
+    this.status = OrderStatus.SHIPPING_ADDRESS_SET;
   }
 
   pay() {

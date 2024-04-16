@@ -1,5 +1,4 @@
 import { Order } from '../entity/order.entity';
-import { OrderStatus } from '../enum/order-status.enum';
 import { OrderRepositoryInterface } from '../port/order.repository.interface';
 import { PaidOrderService } from './paid-order.service';
 
@@ -15,7 +14,7 @@ describe('paid order', () => {
     },
   } as any as OrderRepositoryInterface;
 
-  order.status = OrderStatus.SHIPPING_ADDRESS_SET;
+  order.setShippingAddress('123 Main St');
 
   it('should update an order to paid', async () => {
     const paidOrderService = new PaidOrderService(orderRepositoryMock);
