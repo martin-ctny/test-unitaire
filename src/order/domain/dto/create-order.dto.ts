@@ -1,6 +1,6 @@
 import { IsArray, IsInt, IsNotEmpty, IsString } from 'class-validator';
 
-class CreateOrderItemDto {
+export class CreateOrderItemDto {
   @IsNotEmpty()
   @IsString()
   productName: string;

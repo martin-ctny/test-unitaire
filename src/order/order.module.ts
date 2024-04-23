@@ -7,6 +7,7 @@ import { OrderRepositoryInterface } from './domain/port/order.repository.interfa
 import { Order } from './domain/entity/order.entity';
 import { OrderItem } from './domain/entity/order-item.entity';
 import { GetOrdersService } from './domain/use-case/get-orders.service';
+import { AddOrderItemService } from './domain/use-case/add-order-item.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Order, OrderItem])],
@@ -28,6 +29,13 @@ import { GetOrdersService } from './domain/use-case/get-orders.service';
       provide: GetOrdersService,
       useFactory: (orderRepository: OrderRepositoryInterface) => {
         return new GetOrdersService(orderRepository);
+      },
+      inject: ['OrderRepositoryInterface'],
+    },
+    {
+      provide: AddOrderItemService,
+      useFactory: (orderRepository: OrderRepositoryInterface) => {
+        return new AddOrderItemService(orderRepository);
       },
       inject: ['OrderRepositoryInterface'],
     },
